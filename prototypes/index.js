@@ -16,11 +16,36 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+        let newInstructor = { name: instructor.name };
+
+        // Find the cohort that matches my instructor's cohort -> cohorts.find()
+        // Grab the studentCount value from that cohort - matchingCohort.studentCount
+        // Add studentCount property to my newInstructor -> newInstructor.studentCount = studentCount
+        let matchingCohort = cohorts.find((cohort) => {
+            return cohort.module === instructor.module;
+        });
+
+        newInstuctor.studentCount = matchingCohort.studentCount;
+
+        
+        return newInstuctor;
+    })
+
     return result;
+
+
+    // const result = 'REPLACE WITH YOUR RESULT HERE';
+    // return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // I am given two arrays
+    // I want back an array of the same length
+    // I will use map
+    // The data set that makes sense to iterate over is
+        // the instructors because the instructor array
+        // allready has .......
   },
 
   studentsPerInstructor() {
@@ -262,6 +287,17 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+    const result = cakes.filter(() => {
+        return currentCake.inStock;
+    });
+
+    return result
+
+    // Write annotation here as a comment
+    // I'm receiving an array of cakes, and I want 
+    // a subset of that array, so Im going o reach for filter.
+    // My filter callback will return ony the cakes
+    // who have an inStock value.
   }
 };
 

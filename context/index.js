@@ -16,11 +16,13 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'SpaceProbe';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // looking at ship, it is a new instance of the SpaceProbe class
+    // then moving to the SpaceProbe class constructor you can see the fly method
+    // brings in the fly method
   },
 
   exerciseB() {
