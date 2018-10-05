@@ -160,7 +160,8 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(typeOfRm =>
+      typeOfRm.program === 'FE');;
     return result;
 
     // Annotation:
@@ -174,9 +175,24 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
+    // try to refactor using reduce
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+    const fEClassRooms = classrooms.filter(room => room.program === 'FE');
+
+    const bEClassRooms = classrooms.filter(room => room.program === 'BE');
+
+    let totalFECapacity = 0;
+    let totalBECapacity = 0;
+
+    fEClassRooms.forEach(room => totalFECapacity += room.capacity)
+
+    bEClassRooms.forEach(room => totalBECapacity += room.capacity)
+
+    const roomCapacity = {
+      feCapacity: totalFECapacity,
+      beCapacity: totalBECapacity
+    };
+    return roomCapacity;
 
     // Annotation:
     // Write your annotation here as a comment
@@ -216,11 +232,25 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = const result = cakes.reduce((acc, cake) => {
+
+        cake.toppings.forEach((topping) => {
+          if (!acc.includes(topping)) {
+            acc.push(topping);
+          };
+        })
+
+
+      return acc;
+    }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects
+    // I need to return an array with no duplicates(so it won't be the same length)
+    // I will use reduce
+    // To make sure there are no duplicates, I will only add to the new array if 
+    // it does not include the topping already
   },
 
   groceryList() {
@@ -234,11 +264,24 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+
+      cake.toppings.forEach((topping) =>  {
+        if (!acc[topping]) {
+          acc[topping] = 1
+        } else {
+          acc[topping]++;
+        };
+      });
+
+      return acc;
+    }, {});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I have an array of objects
+    // I need to return an object with keys of all the toppings
+    // I will use reduce
   },
 
   stockPerCake() {
@@ -296,8 +339,8 @@ const cakePrompts = {
 
     // Write annotation here as a comment
     // I'm receiving an array of cakes, and I want 
-    // a subset of that array, so Im going o reach for filter.
-    // My filter callback will return ony the cakes
+    // a subset of that array, so Im going to reach for filter.
+    // My filter callback will return only the cakes
     // who have an inStock value.
   }
 };
@@ -427,21 +470,28 @@ const kittyPrompts = {
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => 
+      kitty.color === 'orange');
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Have an array of objects
+    // Need to return an array of names (same size)
+    // Will use filter
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((kitty1, kitty2) => {
+      return kitty2.age > kitty1.age;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Have an array of objects 
+    // Need an array of sorted ages back
+    // Will use sort
   },
 
   growUp() {
@@ -457,6 +507,8 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
+    const result = kitties.filter(kitty => kitty.age > 2);
+    return result;
   };
 };
 
@@ -497,7 +549,7 @@ const astronomyPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Have an object of 
   },
 
   starsByColor() {
