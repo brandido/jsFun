@@ -232,7 +232,7 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = const result = cakes.reduce((acc, cake) => {
+    const result = cakes.reduce((acc, cake) => {
 
         cake.toppings.forEach((topping) => {
           if (!acc.includes(topping)) {
