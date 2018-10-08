@@ -15,11 +15,17 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 35
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((totalBeers, brewery) => {
+        totalBeers += brewery.beers.length
+        
+        return totalBeers;
+    }, 0);;
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We have an array of objects
+  / / Need to return a number
+    // Will therefor use reduce
   },
 
   getBreweryBeerCount() {
@@ -29,11 +35,19 @@ const breweryPrompts = {
     //  { name: 'Little Machine Brew', beerCount: 11 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map((brewery) => {
+
+      return {
+        name: brewery.name,
+        beerCount: brewery.beers.length
+      }
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We have an array of object
+    // We need an array of the same length with the name of the brewery 
+    // Will use map
   },
 
   findHighestAbvBeer() {
@@ -41,7 +55,15 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((strongestBeer, brewery) => {
+        brewery.beers.forEach((beer) => {
+          if (strongestBeer.abv < beer.abv) {
+            strongestBeer = beer;
+          }
+        });
+        return strongestBeer;
+      }, {abv: 0});
+    
     return result;
 
     // Annotation:
