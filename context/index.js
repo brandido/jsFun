@@ -210,7 +210,8 @@ const context = {
   },
 
   exerciseJ() {
-    $('#btn').on('click', function() {
+    const el = $('#btn');
+    el.on('click', function() {
       console.log($(this));
     });
 
@@ -219,10 +220,28 @@ const context = {
     return result;
 
     // Annotation: 
+<<<<<<< HEAD
     // As this is within a function not contained in a named object,
     // it will default to the window.  I am curious though it it might
     // actually refer to the DOM though, or maybe even the jQuery Object
     // which sits inbetween the JS and the DOM.
+=======
+    // Write your annotation here as a comment.
+  },
+
+  exerciseK() {
+    const el = $('#btn');
+    el.on('click', () => {
+      console.log(this);
+    });
+
+    // What is the value of `this` when a user clicks on our #btn element and the callback is triggered?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+    return result;
+
+    // Annotation: 
+    // Write your annotation here as a comment.
+>>>>>>> 568db0ab5b43ec3388877948b5afc1039e9a1cc4
   }
 
 };
