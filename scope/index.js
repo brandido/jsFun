@@ -617,7 +617,11 @@ const scope = {
 
     // Log C: lunch
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = {
+      A: reference error,
+      B: soup,
+      C: soup
+    }
     return result;
 
     // Annotation:
